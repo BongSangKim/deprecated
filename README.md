@@ -151,7 +151,7 @@ C 혹은 C++ 언어로 프로그래밍한 경험이 있는 것이 도움이 되�
     - [C++ faq - The Definitive C++ Book Guide and List](http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list)
   - [What are the best C++ books? - Quora](https://www.quora.com/What-are-the-best-C++-books)
 
-  ## Miscellaneous
-  - [어떻게 프로그래밍을 공부할 것인가?](https://paper.dropbox.com/doc/UFXkqqqwYBWfpDmigP0WE)
-  - [이메일 에티켓](https://code.dgist.ac.kr/wiki/이메일-에티켓)
-    - 추가: 성적 등 교수만 알아야 될 내용이 아닌 경우, 조교와 교수 모두에게 메일을 보내지 않는 경우 답장을 하지 않을 예정입니다
+## Miscellaneous
+- [어떻게 프로그래밍을 공부할 것인가?](https://paper.dropbox.com/doc/UFXkqqqwYBWfpDmigP0WE)
+- [이메일 에티켓](https://code.dgist.ac.kr/wiki/이메일-에티켓)
+  - 추가: 성적 등 교수만 알아야 될 내용이 아닌 경우, 조교와 교수 모두에게 메일을 보내지 않는 경우 답장을 하지 않을 예정입니다
