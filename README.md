@@ -53,13 +53,17 @@ C 혹은 C++ 언어로 프로그래밍한 경험이 있는 것이 도움이 되�
   - Omar Ramirez Sanchez (sanchez@dgist)
 * 강의실: E7 242
 * 강의시간: 월10:30-12:00, 수9:00-10:30
-* Office Hour (To be announced)
+* Office Hour
 
 | 담당 | Office Hour | 장소 |
 |-----|-------------|-----|
-| 조민규 | TBD | E7 L13 |
-| 박재용 | TBD | TBD |
-| Omar Ramirez Sanchez | TBD | TBD |
+| 조민규 | 화 13:30-14:30 | E7 L13 |
+| 박재용 | 수 15:30-16:30 | TBD |
+| Omar Ramirez Sanchez | 월 13:00-14:00 | TBD |
+
+참고
+- Please check the availability of TAs before visiting during office hours.
+- If you cannot make any of office hours, send email to arrange a meeting with TAs/faculty.
 
 ## 교재
 
