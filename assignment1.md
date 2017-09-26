@@ -205,6 +205,8 @@ int find_max(int* start, int* end);
 void sprint_ascii(char* buffer, int start, int end, int item_per_line);
 ```
 
+Hint: use casting to convert int to char.
+
 ### `string_compare()`
 ```cpp
 /**
