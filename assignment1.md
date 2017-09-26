@@ -27,6 +27,9 @@ When implementing the above functions, you cannot use any C/C++ library function
   - Proper use of pointers and/or arrays
   - Readability of codes
   - Simple and clean code without redundancy
+  - Adequate comments (SHOULD BE IN ENGLISH)
+
+  **_Subject to change_**
 
 ## Due
 
