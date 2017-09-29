@@ -241,7 +241,7 @@ int string_n_compare(const char* lhs, const char* rhs, int n);
 ```
 
 ### `string_copy()`
-```python
+```cpp
 /**
  * Copy a C string from src to dst and return the destination pointer (dst)
  *
