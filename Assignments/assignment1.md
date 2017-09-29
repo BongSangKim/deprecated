@@ -175,7 +175,6 @@ int find_max(int* a, int start, int end);
 /**
  * Return the maximum value of specified elements in the given array
  *
- * @param a         int array
  * @param start     low endpoint (inclusive) of the array (pointer)
  * @param end       high endpoint (exclusive) of the array (pointer)
  * @return          the maximum of the elements from start, inclusive
@@ -184,7 +183,7 @@ int find_max(int* a, int start, int end);
 int find_max(int* start, int* end);
 ```
 
-### `spring_ascii()`
+### `sprint_ascii()`
 
 ```cpp
 /**
@@ -242,7 +241,7 @@ int string_n_compare(const char* lhs, const char* rhs, int n);
 ```
 
 ### `string_copy()`
-```
+```python
 /**
  * Copy a C string from src to dst and return the destination pointer (dst)
  *
