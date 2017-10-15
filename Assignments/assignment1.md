@@ -8,13 +8,15 @@ The description of this assignment will be updated as needed. Please check this 
 
 Write 7 functions with the specification shown below. These functions access or manipulate data stored in arrays and/or pointers.
 
-* find_max() (version 1)
-* find_max() (version 2)
-* sprint_ascii()
-* string_compare()
-* string_n_compare()
-* string_copy()
-* string_in()
+* find_max() (version 1) (10 points)
+* find_max() (version 2) (10 points)
+* sprint_ascii() (15 points)
+* string_compare() (15 points)
+* string_n_compare() (20 points)
+* string_copy() (15 points)
+* string_in() (15 points)
+
+(Total 100 points)
 
 When implementing the above functions, you cannot use any C/C++ library functions (one exception is `sprintf()`).
 
