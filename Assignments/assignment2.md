@@ -114,7 +114,7 @@ For the above code, you need to get the following results. The test code may inc
 ```
 t1: len=0, capacity=0
 t1: len=1, capacity=2
-t1: len=2, capacity=4
+t1: len=2, capacity=2
 t1: len=3, capacity=4
 Before copying_from...
 t2: len=2, capacity=2
