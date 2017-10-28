@@ -38,6 +38,16 @@ To alleviate this problem, we want to allocate spare spaces in advance. The memb
 
 So the member functions which may increase the capacity, we should be very careful about dynamic memory management not to access memory area beyond the allocated memory. See the requirement of `append()` and `copy_from()` for details.
 
+Let's clarify this with an example. Assume that you make an empty IntList instance (i.e., an IntList instance which stores 0 item) and want to append 10 values one by one. (This is very common practice in programming.)
+
+When you call `append()` for the first time to add the first value, it will allocate a memory block for 1 item and copy the new value to it.
+
+When you call `append()` for the second time to add the second value, it will allocate a memory block for 2 items, copy the existing item (i.e., the first value), and copy the second value at the end of the newly allocated memory.
+
+This process is repeated whenever you call `append()` function to add one more value. The performance penalty is severer when the instance store many values in `elem` since it needs to copy all the existing items to a new location.
+
+In this assignment, you are supposed to upgrade `append()` function such that it doubles allocated memory if necessary. By doing so, you don't have to allocate a new memory and copy all the existing items to the newly allocated memory, and thus, the performance penalty will be decreased.
+
 ## Sample output
 
 ```cpp
