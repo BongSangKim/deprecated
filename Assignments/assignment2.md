@@ -16,6 +16,17 @@ You are required to submit your assignment on elice. As of now, the assignment i
 
 The entry will be open by 10/28 (Sat).
 
+## Scores
+
+1. Correct implementation of 4 functions: 70 pts. 
+2. Coding style: 30 pts.
+  - Proper use of pointers and/or arrays
+  - Readability of codes
+  - Simple and clean code without redundancy
+  - Adequate comments (SHOULD BE IN ENGLISH)
+
+  **_Subject to change_**
+
 ## Overview
 
 Write 4 member functions for class `IntList`.

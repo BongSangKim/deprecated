@@ -20,19 +20,6 @@ Write 7 functions with the specification shown below. These functions access or 
 
 When implementing the above functions, you cannot use any C/C++ library functions (one exception is `sprintf()`).
 
-**Note** a couple of more functions may be added to assignment1.
-
-## Scores
-
-1. Correct implementation of 7 functions: 70 pts. (10 pts each)
-2. Coding style: 30 pts.
-  - Proper use of pointers and/or arrays
-  - Readability of codes
-  - Simple and clean code without redundancy
-  - Adequate comments (SHOULD BE IN ENGLISH)
-
-  **_Subject to change_**
-
 ## Due
 
 This assignment is due by 11:59 pm on 10/16 (Monday). The penalty due to the late submission is as follows.
@@ -43,8 +30,6 @@ This assignment is due by 11:59 pm on 10/16 (Monday). The penalty due to the lat
 |  < 24 hr | 30%     |
 |  < 48 hr | 50%     |
 | >= 48 hr | 100%    |
-
-**_Subject to change_**
 
 ## Submission
 
