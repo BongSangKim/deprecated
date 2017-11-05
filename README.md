@@ -129,7 +129,13 @@ C 혹은 C++ 언어로 프로그래밍한 경험이 있는 것이 도움이 되�
 
 *책 제목 뒤에 *표시는 한국어 번역본이 있다는 뜻*
 
-* 책
+* References
+  - [cppreference.com](http://en.cppreference.com/w/)
+  - [cplusplus.com - The C++ Resources Network](http://www.cplusplus.com/)
+  - [C/C++ Language and Standard Libraries | Microsoft Docs](https://docs.microsoft.com/en-us/cpp/cpp/c-cpp-language-and-standard-libraries)
+  - [C++ 언어 참조 | MSDN](https://msdn.microsoft.com/ko-kr/library/3bstk3k5.aspx): for visual studio 2015, but still good for C++ reference
+  - [Stack Overflow](https://stackoverflow.com): Most trustworthy site for programming questions
+* Books on general C++
   - [Jumping into C++](https://www.amazon.com/Jumping-into-C-Alex-Allain/dp/0988927802)*: 프로그래밍을 처음 배우는 사람을 대상으로 쉽게 써져 있음
   - [Programming -- Principles and Practice Using C++](http://www.stroustrup.com/programming.html)*: 프로그래밍을 처음 배우는 사람들을 대상으로 C++ 창시자인 [Bjarne Stroustrup](http://www.stroustrup.com/)이 쓴 책. 장점이자 단점은 매우 두껍다
   - [[한빛] 이것이 C++이다: 강의 현장을 그대로 옮긴 C++ 입문서](http://www.hanbit.co.kr/store/books/look.php?p_code=B7010575554):  기본적인 프로그래밍 지식은 있는 사람을 대상으로 쓴 책
@@ -154,6 +160,11 @@ C 혹은 C++ 언어로 프로그래밍한 경험이 있는 것이 도움이 되�
   - [C++ info on stack overflow](http://stackoverflow.com/tags/c++/info)
     - [C++ faq - The Definitive C++ Book Guide and List](http://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list)
   - [What are the best C++ books? - Quora](https://www.quora.com/What-are-the-best-C++-books)
+* CppCon: many advanced technical topics as well as somewhat light topics
+  - [cppcon | The C++ Conference](https://cppcon.org/)
+  - [CppCon](https://github.com/CppCon)
+  - Recommended presentation
+    - [CppCon 2017: Bjarne Stroustrup “Learning and Teaching Modern C++”](https://www.youtube.com/watch?v=fX2W3nNjJIo)
 
 ## Miscellaneous
 - [어떻게 프로그래밍을 공부할 것인가?](https://paper.dropbox.com/doc/UFXkqqqwYBWfpDmigP0WE)
