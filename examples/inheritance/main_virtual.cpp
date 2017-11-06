@@ -3,6 +3,15 @@
 
 using namespace std;
 
+void foo()
+{
+    Rectangle r {1, 2};
+    Circle c {2};
+    Shape* shapes[] {&r, &c};
+    cout << shapes[0]->getArea() << endl;
+    cout << shapes[1]->getArea() << endl;
+}
+
 int main()
 {
     Rectangle rectangle {1, 2};
@@ -20,5 +29,8 @@ int main()
     for (int i = 0; i < 3; i++)
         cout << "Area of shapes[" << i << "]="
              << shapes[i]->getArea() << endl;
+
+    // just to show this works
+    foo();
 }
 
