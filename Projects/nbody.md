@@ -210,8 +210,59 @@ Done
 
 ### Error input
 
+```
+
+Enter a command: xyz
+Unrecognized command!
+
+Enter a command: ap -1 1 0 0 0 0
+Particle number is not in range!
+
+Enter a command: ap 0 1.9890e+30 0 0 0 0
+Particle 0 added
+
+Enter a command: ap 1 5.9740e+24 1.4960e+11 0.0000e+00 0.0000e+00 2.9800e+04
+Particle 1 added
+
+Enter a command: dp 2
+No particle with that number!
+
+Enter a command: pp 2
+No particle with that number
+
+Enter a command: ae 1 0
+No set with that number!
+
+Enter a command: as 1
+Set 1 added
+
+Enter a command: ae 1 2
+No particle with that number!
+
+Enter a command: ps 2
+No set with that number
+
+Enter a command: pf 1
+No forces
+
+Enter a command: af 1 1 1.5 2.5
+Force 1 added
+
+Enter a command: cg off
+Cannot recognize status!
+
+Enter a command: de 1 2
+No particle with that number!
+
+Enter a command: qq
+All force deleted
+All sets deleted
+All particles deleted
+Particles: 0
+Sets: 0
+Forces: 0
+Done
+```
+
+
 *to be added*
-
-```
-
-```

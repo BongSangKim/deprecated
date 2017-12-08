@@ -104,9 +104,9 @@ Testing List<int> with operator overload...
 [42, 23, 42, 23, 42, 23], size=6, capacity=8
 
 Testing List<int>::pop()...
-lst.pop(): 0
-[42, 23, 42, 23, 42], size=5, capacity=8
 lst.pop(): 23
+[42, 23, 42, 23, 42], size=5, capacity=8
+lst.pop(): 42
 [42, 23, 42, 23], size=4, capacity=8
 
 Testing List<double>...
