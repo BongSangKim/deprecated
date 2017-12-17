@@ -149,6 +149,8 @@ List<T>::List(int n_);
 /*
  * Copy constructor
  *
+ * Allocate memory for the items stored in list
+ *
  * @param list    an instance of List<T>
  */
 template<typename T>
