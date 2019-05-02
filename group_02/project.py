@@ -42,3 +42,14 @@ dt.train(text, total_examples=len(text), epochs=10) #오바마와 트럼프 학�
 print(dt.wv['war'])
 
 dt.wv.most_similar(positive='people')
+
+
+
+import gensim 
+from os import walk
+
+file_list = []
+current_path = "./Obama/"
+for (dirpath, dirnames, filenames) in walk(current_path):
+    file_list.extend(filenames)
+    break
