@@ -42,5 +42,3 @@ dt.train(text, total_examples=len(text), epochs=10) #오바마와 트럼프 학�
 print(dt.wv['war'])
 
 dt.wv.most_similar(positive='people')
-
-print(ob_model.wv['america'])
