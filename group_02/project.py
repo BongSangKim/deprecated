@@ -15,7 +15,7 @@ for ind in range(48):
             line = file.readline()
 
 ob = Word2Vec(text, size=10, window=5, min_count=1, workers=4) #size 벡터의 차원
-ob.train(text, total_examples=len(text), epochs=100) #epochs 반복횟수
+ob.train(text, total_examples=len(text), epochs=10) #epochs 반복횟수, 100으로 설정하기, test중은 10으로 설정
 
 print(ob.wv['war'])
 
@@ -37,9 +37,10 @@ for ind in range(18):
             line = file.readline()
 
 dt = Word2Vec(text, size=10, window=5, min_count=1, workers=4) #오바마와 트럼프 학습 환경 일치시키기
-dt.train(text, total_examples=len(text), epochs=100) #오바마와 트럼프 학습 환경 일치시키기
+dt.train(text, total_examples=len(text), epochs=10) #오바마와 트럼프 학습 환경 일치시키기, epochs 100으로 설정하기
 
 print(dt.wv['war'])
 
 dt.wv.most_similar(positive='people')
 
+print(ob_model.wv['america'])
