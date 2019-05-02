@@ -1,3 +1,6 @@
+#original code 'spring19-se201-group-02.ipynb' from github.com/HyosangKang/LinearAlgebra/Project/Group_02
+# Made by Prof. HyosangKang, edit. by BongSangKim
+ 
 from gensim.models import Word2Vec
 import gensim.utils
 
@@ -20,8 +23,8 @@ ob.wv.most_similar(positive='people')
 
 
 '''이제 trump 부분코드'''
-from gensim.models import Word2Vec
-import gensim.utils
+#from gensim.models import Word2Vec 이거는 겹치니까 다시 import 안해도됨
+#import gensim.utils
 
 text = []
 for ind in range(18):
