@@ -82,7 +82,7 @@ tp_model.train(document, total_examples=len(document), epochs=500)
 
 print(ob_model.wv.vocab['america'].count) #특정 voca 갯수 체크하는 코드
 
-print(ob_model.wv['america']) #특정 voca 벡터 체크하는 코드
+print(ob_model.wv['hate']) #특정 voca 벡터 체크하는 코드
 
 tp_model.wv.most_similar(positive = ['american'], topn=20) 
 #특정 voca와 비슷한 wordvector들 출력 (voca,cos값)
@@ -99,7 +99,7 @@ for _ in range(100):
     print(wordlist[idx], max(count))
     del count[idx]
     del wordlist[idx]
-####
+'''
 #최빈출 워드 출력 코드
 #=============================test- t-SNE=====================================    
 #=============================test- t-SNE=====================================
@@ -152,4 +152,84 @@ tsne_plot_similar_words('Similar words', keys, embeddings_en_2d, word_clusters, 
 #=============================test- t-SNE=====================================
 #=============================test- t-SNE=====================================
 ###추가할 코드###
-'''그람 슈미츠 코드'''    
+'''
+'''그람 슈미츠 코드''' 
+'''   
+import numpy as np
+def gram_schmidt_columns(X):
+    Q, R = np.linalg.qr(X,mode='complete')
+    return Q
+def stack(x,y):
+    return np.column_stack((x,y))
+A_a=stack(ob.wv['war'],ob.wv['america'])
+print(gram_schmidt_columns(A_a))
+print(ob.wv['war'])
+'''
+'''
+가중치 행렬
+
+obama, trump에 대해 동일한 10개의 단어 선정 
+
+일단 obama에 대해서만
+
+행:단어 1~10
+열:단어 1~10
+america, korea, we, economy, global, hate, muslim, labor, world, people
+
+np.array([])
+행렬 A_ij= i와 j 사이의 거리
+
+W행렬(가중치 행렬)
+W_ij=exp(-A_ij/(2*sigma^2))
+sigma^2=A_ij의 분산..
+여기서 한 행이나 한 열만 가져오면 각 단어의 가중치를 얻는다.
+
+'''
+import numpy as np
+def stack(x,y):
+    return np.column_stack((x,y))
+
+word=[ob.wv['america'],ob.wv['korea'],ob.wv['we'],ob.wv['economy'],ob.wv['global'],ob.wv['hate'],ob.wv['muslim'],ob.wv['labor'],ob.wv['world'],ob.wv['people']]
+c1,c2,c3,c4,c5,c6,c7,c8,c9,c10=[],[],[],[],[],[],[],[],[],[]
+for i in range(len(word)):
+    c1.append(word[0]-word[i])
+    c2.append(word[1]-word[i])
+    c3.append(word[2]-word[i])
+    c4.append(word[3]-word[i])
+    c5.append(word[4]-word[i])
+    c6.append(word[5]-word[i])
+    c7.append(word[6]-word[i])
+    c8.append(word[7]-word[i])
+    c9.append(word[8]-word[i])
+    c10.append(word[9]-word[i])
+var=np.var(c1+c2+c3+c4+c5+c6+c7+c8+c9+c10)
+for i in range(10):
+    c1[i]=np.exp(-c1[i]/(2*var))
+    c2[i]=np.exp(-c2[i]/(2*var))
+    c3[i]=np.exp(-c3[i]/(2*var))
+    c4[i]=np.exp(-c4[i]/(2*var))
+    c5[i]=np.exp(-c5[i]/(2*var))
+    c6[i]=np.exp(-c6[i]/(2*var))
+    c7[i]=np.exp(-c7[i]/(2*var))
+    c8[i]=np.exp(-c8[i]/(2*var))
+    c9[i]=np.exp(c9[i]/(2*var))
+    c10[i]=np.exp(-c10[i]/(2*var))
+
+W=stack(stack(stack(stack(stack(stack(stack(stack(stack(c1,c2),c3),c4),c5),c6),c7),c8),c9),c10)
+
+#각각의 c_n column은 가중치 column vector이다.
+CoUnt=[ob_model.wv.vocab['america'].count,ob_model.wv.vocab['korea'].count,ob_model.wv.vocab['we'].count,ob_model.wv.vocab['economy'].count,ob_model.wv.vocab['global'].count,ob_model.wv.vocab['hate'].count,ob_model.wv.vocab['muslim'].count,ob_model.wv.vocab['labor'].count,ob_model.wv.vocab['world'].count,ob_model.wv.vocab['people'].count]
+print(sum(np.dot(CoUnt,W)))
+
+'''
+print(sum(np.dot(CoUnt,c1)))
+print(sum(np.dot(CoUnt,c2)))
+print(sum(np.dot(CoUnt,c3)))
+print(sum(np.dot(CoUnt,c4)))
+print(sum(np.dot(CoUnt,c5)))
+print(sum(np.dot(CoUnt,c6)))
+print(sum(np.dot(CoUnt,c7)))
+print(sum(np.dot(CoUnt,c8)))
+print(sum(np.dot(CoUnt,c9)))
+print(sum(np.dot(CoUnt,c10)))
+'''
