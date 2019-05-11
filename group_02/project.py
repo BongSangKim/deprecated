@@ -179,16 +179,16 @@ def list_word_obama(w1,w2,w3,w4,w5,w6,w7,w8,w9,w10):
     word=[ob.wv[w1],ob.wv[w2],ob.wv[w3],ob.wv[w4],ob.wv[w5],ob.wv[w6],ob.wv[w7],ob.wv[w8],ob.wv[w9],ob.wv[w10]]
     c1,c2,c3,c4,c5,c6,c7,c8,c9,c10=[],[],[],[],[],[],[],[],[],[]
     for i in range(len(word)):
-        c1.append((sum(word[0]-word[i])**2)**(1/2)) #row vector
-        c2.append((sum(word[1]-word[i])**2)**(1/2)) 
-        c3.append((sum(word[2]-word[i])**2)**(1/2)) 
-        c4.append((sum(word[3]-word[i])**2)**(1/2)) 
-        c5.append((sum(word[4]-word[i])**2)**(1/2)) 
-        c6.append((sum(word[5]-word[i])**2)**(1/2)) 
-        c7.append((sum(word[6]-word[i])**2)**(1/2)) 
-        c8.append((sum(word[7]-word[i])**2)**(1/2)) 
-        c9.append((sum(word[8]-word[i])**2)**(1/2)) 
-        c10.append((sum(word[9]-word[i])**2)**(1/2)) 
+        c1.append((sum(word[0]-word[i])**2)) #row vector
+        c2.append((sum(word[1]-word[i])**2)) 
+        c3.append((sum(word[2]-word[i])**2)) 
+        c4.append((sum(word[3]-word[i])**2)) 
+        c5.append((sum(word[4]-word[i])**2)) 
+        c6.append((sum(word[5]-word[i])**2)) 
+        c7.append((sum(word[6]-word[i])**2)) 
+        c8.append((sum(word[7]-word[i])**2)) 
+        c9.append((sum(word[8]-word[i])**2)) 
+        c10.append((sum(word[9]-word[i])**2)) 
         var=np.var(c1+c2+c3+c4+c5+c6+c7+c8+c9+c10)
     for i in range(10):
         c1[i]=np.exp(-c1[i]/(2*var))
@@ -222,16 +222,16 @@ def list_word_trump(w1,w2,w3,w4,w5,w6,w7,w8,w9,w10):
     word=[dt.wv[w1],dt.wv[w2],dt.wv[w3],dt.wv[w4],dt.wv[w5],dt.wv[w6],dt.wv[w7],dt.wv[w8],dt.wv[w9],dt.wv[w10]]
     c1,c2,c3,c4,c5,c6,c7,c8,c9,c10=[],[],[],[],[],[],[],[],[],[]
     for i in range(len(word)):
-        c1.append((sum(word[0]-word[i])**2)**(1/2)) #row vector
-        c2.append((sum(word[1]-word[i])**2)**(1/2)) 
-        c3.append((sum(word[2]-word[i])**2)**(1/2)) 
-        c4.append((sum(word[3]-word[i])**2)**(1/2)) 
-        c5.append((sum(word[4]-word[i])**2)**(1/2)) 
-        c6.append((sum(word[5]-word[i])**2)**(1/2)) 
-        c7.append((sum(word[6]-word[i])**2)**(1/2)) 
-        c8.append((sum(word[7]-word[i])**2)**(1/2)) 
-        c9.append((sum(word[8]-word[i])**2)**(1/2)) 
-        c10.append((sum(word[9]-word[i])**2)**(1/2)) 
+        c1.append((sum(word[0]-word[i])**2)) #row vector
+        c2.append((sum(word[1]-word[i])**2)) 
+        c3.append((sum(word[2]-word[i])**2)) 
+        c4.append((sum(word[3]-word[i])**2)) 
+        c5.append((sum(word[4]-word[i])**2)) 
+        c6.append((sum(word[5]-word[i])**2)) 
+        c7.append((sum(word[6]-word[i])**2)) 
+        c8.append((sum(word[7]-word[i])**2)) 
+        c9.append((sum(word[8]-word[i])**2)) 
+        c10.append((sum(word[9]-word[i])**2)) 
         var=np.var(c1+c2+c3+c4+c5+c6+c7+c8+c9+c10)
     for i in range(10):
         c1[i]=np.exp(-c1[i]/(2*var))
