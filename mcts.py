@@ -1,9 +1,10 @@
+from __future__ import division  #python 2.x 호환
 
+import time        #time.time() 사용, 현재시간 호출
+import math        #제곱근, log 사용
+import random      #random.choice()사용
 
-import time
-import math
-import random
-
+#mcts 라이브러리 사용을 위해 state값이 필요하다. 
 
 def randomPolicy(state):
     while not state.isTerminal():
