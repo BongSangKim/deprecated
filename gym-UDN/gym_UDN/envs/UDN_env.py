@@ -16,7 +16,7 @@ class UDNEnv(gym.Env):
         self.InterferenceBSposition = np.loadtxt('InterferenceBSposition.csv', delimiter=',')
         self.InterferenceBSnum = len(self.InterferenceBSposition[0])
         self.Area = 10 ** 2
-        self.usernum = 16
+        self.usernum = 100
         self.BSstate = np.ones(self.BSnum, dtype = bool)
         self.InterferenceBSstate = np.random.randint(2, size = self.InterferenceBSnum)
         self.user_Xposition = np.random.uniform(0,self.Area,self.usernum)
@@ -34,20 +34,22 @@ class UDNEnv(gym.Env):
         self.take_action(action)
         
         Datarate_weightvalue = 1
-        Energyconsumption_weightvalue = 10
+        Energyconsumption_weightvalue = 0.5
         
         signal = self.BS_User_S()
         Interference = self.Interference_User_I()
-        SIR = signal / Interference
-        Datarate = self.bandwidth * np.log2(1+SIR)
+        #SIR = signal / Interference
+        SIR = signal - Interference
+        #Datarate = self.bandwidth * np.log2(1+SIR)
+        Datarate = self.bandwidth * np.log2(1+10**(SIR/10))
         #coverage_prob = np.sum(Datarate > self.threshold) / self.usernum
         #print(coverage_prob)
         Energyconsumption = np.sum(self.BSstate.astype(float))
         if Energyconsumption == 0:
-            reward = -10
+            reward = -1000
             is_done = True
         else:
-            reward = Datarate_weightvalue * np.mean(Datarate) / (10 ** 6) / (Energyconsumption_weightvalue * Energyconsumption)
+            reward = Datarate_weightvalue * np.sum(Datarate) / (10 ** 6) - (Energyconsumption_weightvalue * Energyconsumption)
             #reward = 1.0
             is_done =False
         #if coverage_prob < 0.7:
@@ -55,6 +57,8 @@ class UDNEnv(gym.Env):
             #is_done = True
         #else:
             #is_done = False
+        #reward = Datarate_weightvalue * np.sum(Datarate) / (10 ** 6) - (Energyconsumption_weightvalue * Energyconsumption)
+        #is_done = False
         info = self.BSstate.astype(float)
         self.InterferenceBSstate = np.random.randint(2, size = self.InterferenceBSnum)
         self.state[2 * self.usernum] = self.Hexchange(self.InterferenceBSstate)
@@ -79,7 +83,7 @@ class UDNEnv(gym.Env):
             self.state[j] = self.state[j] + self.movedistance[j]
             if self.state[j] > self.Area:
                 self.state[j] = self.state[j] - self.Area
-            else if self.state[j] < 0:
+            if self.state[j] < 0:
                 self.state[j] = self.state[j] + self.Area
             
     
@@ -136,8 +140,8 @@ class UDNEnv(gym.Env):
                 BS_User_distance[:,i] = np.inf
         #BS_User_distance = BS_User_distance[:,self.BSstate]
         assosiation_matrix = self.assosiation(BS_User_distance)
-        user_signal_power = np.power(BS_User_distance[assosiation_matrix],-2)
-        #user_signal_power = 10 * 4 * np.log10(BS_User_distance[assosiation_matrix]) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
+        #user_signal_power = np.power(BS_User_distance[assosiation_matrix],-2)
+        user_signal_power = 10 * 4 * np.log10(BS_User_distance[assosiation_matrix]) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
         return user_signal_power
     
     def Interference_User_I(self):
@@ -154,13 +158,26 @@ class UDNEnv(gym.Env):
                 InterferenceBS_User_position[0][i][j] = self.state[i] - self.InterferenceBSposition[0][j]
                 InterferenceBS_User_position[1][i][j] = self.state[self.usernum + i] - self.InterferenceBSposition[1][j]
         Interference_User_distance = np.linalg.norm(InterferenceBS_User_position, ord = 2, axis = 0)
+
         if np.sum(self.InterferenceBSstate) == 0:
-            user_interference_power =  np.power(np.sum(Interference_User_distance,axis = 1),-2)
-            #user_interference_power = 10 * 4 * np.log10(np.sum(Interference_User_distance,axis = 1)) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
+            #user_interference_path_loss =  np.power(np.mean(Interference_User_distance,axis = 1),-2)
+            user_interference_path_loss = 10 * 4 * np.log10(np.mean(Interference_User_distance,axis = 1)) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
+
         else:
-            user_interference_power =  np.power(np.sum(Interference_User_distance[:,InterferenceBSstate_bool],axis = 1),-2)
-            #user_interference_power = 10 * 4 * np.log10(np.sum(Interference_User_distance[:,InterferenceBSstate_bool],axis =1)) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
-        return user_interference_power
+            Interference_User_distance = Interference_User_distance[:,InterferenceBSstate_bool]
+            inter_bandwidth_num = self.InterferenceBSposition[2,InterferenceBSstate_bool]
+            for i in range(self.usernum):
+                for j in range(len(inter_bandwidth_num)):
+                    if inter_bandwidth_num[j] == self.user_BS_shortest[i]:
+                        user_interference_power[i] = user_interference_power[i] + Interference_User_distance[i,j]
+
+            for i in range(self.usernum):
+                if user_interference_power[i] == 0:
+                    user_interference_power[i] = np.mean(Interference_User_distance[i])
+
+            #user_interference_path_loss =  np.power(user_interference_power,-2)
+            user_interference_path_loss = 10 * 4 * np.log10(user_interference_power) + 20 * np.log10(3.5 * 10 ** 9) - 147.55
+        return user_interference_path_loss
     
 
     def assosiation(self, distance):
@@ -168,9 +185,9 @@ class UDNEnv(gym.Env):
         #return usernum by BSnum matrix dtype boolean
         BS_user_assosiation = np.zeros((self.usernum,self.BSnum),dtype = bool)
         #BS_user_assosiation = BS_user_assosiation[:,self.BSstate]
-        user_BS_shortest = np.argmin(distance,axis = 1)
+        self.user_BS_shortest = np.argmin(distance,axis = 1)
         for i in range(self.usernum):
-            BS_user_assosiation[i][user_BS_shortest[i]] = True
+            BS_user_assosiation[i][self.user_BS_shortest[i]] = True
         #print(BS_user_assosiation)
         return BS_user_assosiation
 
