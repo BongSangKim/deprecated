@@ -6,6 +6,7 @@ import collections   #replay buffer에서 쓰일 deque를 import하기 위함 do
 import random
 import numpy as np
 from matplotlib import pyplot as plt
+import time
 
 import torch    #pytorch
 import torch.nn as nn
@@ -17,7 +18,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class ReplayBuffer():            #3:35. et=(st,at,rt,st+1)인 튜플 e를 buffer에 저장
     def __init__(self):
         self.buffer = collections.deque()   #maxlen이상이면 FIFO으로 빠져나감
-        self.batch_size = 1024      #replay buffer에서 sampling할때 필요
+        self.batch_size = 2048      #replay buffer에서 sampling할때 필요
         self.size_limit = 1000000   #buffer의 최대 크기, DQN 논문에서는 백만
      
     def put(self, data):          #replay buffer에 데이터를 넣는 것, FIFO, 들어와서 다 차면 왼쪽으로 나감
@@ -37,7 +38,7 @@ class Qnet(nn.Module):    #Q network, torch.nn 모듈을 상속받음
 
     def __init__(self):
         super(Qnet, self).__init__()
-        self.fc1 = nn.Linear(201, 256).cuda() #nn.Linear(len(state:BSnum+UEnum*2),64)  
+        self.fc1 = nn.Linear(65, 256).cuda() #nn.Linear(len(state:BSnum+UEnum*2),64)  
         self.fc2 = nn.Linear(256, 256).cuda() 
         self.fc3 = nn.Linear(256, 256).cuda()  #output은 action 경우의 수, 우리는 2*(BSnum)개 output되야함...
 
@@ -112,11 +113,12 @@ def main():
 
     avg_t = 0
     total_reward = 0
+    avg_reward = 0
     best_reward = 0
     best_reward_policy = np.zeros(env.BSnum,dtype = float)
     best_time = 0
     gamma = 0.99
-    batch_size = 1024
+    batch_size = 2048
     optimizer = optim.Adam(q.parameters(), lr=0.0005)  #q.parameter를 update, 이때 q-target은 update안함!
 
     totalR_epi = []
@@ -132,8 +134,8 @@ def main():
     BS_on_count = np.zeros(env.BSnum,dtype = float)
     BS_num_count = range(env.BSnum)
 
-    for n_epi in range(10000):  #에피소드를 100000으로 일단,
-        epsilon = max(0.001, 0.99-0.01*(n_epi)/50) #(0.01*(n_epi)/60)엡실론을 Linear annealing from 8% to 1%,
+    for n_epi in range(100000):  #에피소드를 100000으로 일단,
+        epsilon = max(0, 0.9999-0.01*(n_epi)/500) #(0.01*(n_epi)/60)엡실론을 Linear annealing from 8% to 1%,
         #epsilon = max(0.01, 0.08 - 0.01*(n_epi/200))
                                                      #따라서 exploration을 처음에 많이 하다가 점점 줄인다
         s = env.reset()
@@ -150,11 +152,12 @@ def main():
             avg_t += 1
 
             if done:
-                if best_reward < total_reward:
-                    best_reward = total_reward
+                avg_reward = total_reward / avg_t
+                if best_reward < avg_reward:
+                    best_reward = avg_reward
                     best_time = avg_t
                     best_reward_policy = BS_on_count
-                totalR_epi.append(total_reward)
+                totalR_epi.append(avg_reward)
                 totalT_epi.append(avg_t)
                 total_reward = 0
                 avg_t = 0
@@ -162,17 +165,18 @@ def main():
                 break
 
             if t == 99:
-                if best_reward < total_reward:
-                    best_reward = total_reward
+                avg_reward = total_reward / avg_t
+                if best_reward < avg_reward:
+                    best_reward = avg_reward
                     best_time = avg_t
                     best_reward_policy = BS_on_count
-                totalR_epi.append(total_reward)
+                totalR_epi.append(avg_reward)
                 totalT_epi.append(avg_t)
                 total_reward = 0
                 avg_t = 0
                 BS_on_count = np.zeros(env.BSnum,dtype = float)
                 
-        if memory.size()>20000:       #memory가 충분히 쌓이면 train함수 호출(충분히 쌓이고 시작해야함) 
+        if memory.size()>100000:       #memory가 충분히 쌓이면 train함수 호출(충분히 쌓이고 시작해야함) 
             train(q, q_target, memory, gamma, optimizer, batch_size)
 
         if n_epi%20==0 and n_epi!=0:  #20에피소드마다 최근 에피소드 평균 timestep, target network를 update
@@ -208,7 +212,7 @@ def main():
     plt.ylabel('active probability')
     plt.title('Probability of BS activate')
     plt.show()
-    '''
+
     plt.figure(3)
     plt.plot(epi_num_20, totalT_epi_20)
     plt.plot(epi_num_100, totalT_epi_100)
@@ -216,6 +220,9 @@ def main():
     plt.ylabel('average time')
     plt.title('Result')
     plt.legend(['average 20 episode','average 100 episode'])
-    '''
+
 if __name__ == '__main__':
+    start_time = time.time()
     main()
+    end_time = time.time()
+    print("Runningtime: {} sec".format(end_time - start_time))

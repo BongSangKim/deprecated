@@ -16,7 +16,7 @@ class UDNEnv(gym.Env):
         self.InterferenceBSposition = np.loadtxt('InterferenceBSposition.csv', delimiter=',')
         self.InterferenceBSnum = len(self.InterferenceBSposition[0])
         self.Area = 10 ** 2
-        self.usernum = 100
+        self.usernum = 32
         self.BSstate = np.ones(self.BSnum, dtype = bool)
         self.InterferenceBSstate = np.random.randint(2, size = self.InterferenceBSnum)
         self.user_Xposition = np.random.uniform(0,self.Area,self.usernum)
@@ -34,22 +34,25 @@ class UDNEnv(gym.Env):
         self.take_action(action)
         
         Datarate_weightvalue = 1
-        Energyconsumption_weightvalue = 0.5
+        Energyconsumption_weightvalue = 2
         
-        signal = self.BS_User_S()
+        signal = self.BS_User_S() * 2
+
         Interference = self.Interference_User_I()
+
         #SIR = signal / Interference
         SIR = signal - Interference
         #Datarate = self.bandwidth * np.log2(1+SIR)
         Datarate = self.bandwidth * np.log2(1+10**(SIR/10))
+
         #coverage_prob = np.sum(Datarate > self.threshold) / self.usernum
         #print(coverage_prob)
         Energyconsumption = np.sum(self.BSstate.astype(float))
         if Energyconsumption == 0:
-            reward = -1000
+            reward = -100
             is_done = True
         else:
-            reward = Datarate_weightvalue * np.sum(Datarate) / (10 ** 6) - (Energyconsumption_weightvalue * Energyconsumption)
+            reward = Datarate_weightvalue * np.mean(Datarate) / (10 ** 6) - (Energyconsumption_weightvalue * Energyconsumption)
             #reward = 1.0
             is_done =False
         #if coverage_prob < 0.7:
@@ -153,6 +156,7 @@ class UDNEnv(gym.Env):
         user_interference_power = np.zeros(self.usernum,dtype = float)
         user_interference_path_loss = np.zeros(self.usernum,dtype = float)
         #axis x = 0, axis y = 1
+
         for i in range(self.usernum):
             for j in range(self.InterferenceBSnum):
                 InterferenceBS_User_position[0][i][j] = self.state[i] - self.InterferenceBSposition[0][j]
@@ -195,7 +199,7 @@ class UDNEnv(gym.Env):
 if __name__ == "__main__":
     env = UDNEnv()
     env.reset()
-    action = 1
+    action = 255
     _, R, _, I = env.step(action)
     print(R)
     print(I)
