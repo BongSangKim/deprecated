@@ -1,0 +1,1336 @@
+ARTICLE
+Received 11 Oct 2013 | Accepted 9 Apr 2014 | Published 14 May 2014
+
+DOI: 10.1038/ncomms4846
+
+OPEN
+
+Magnetophoretic circuits for digital control
+of single particles and cells
+Byeonghwa Lim1,2,*, Venu Reddy1,2,*, XingHao Hu1,2, KunWoo Kim1,2, Mital Jadhav2, Roozbeh Abedini-Nassab3,4,
+Young-Woock Noh2, Yong Taik Lim5, Benjamin B. Yellen3,4 & CheolGi Kim1,2
+
+The ability to manipulate small ﬂuid droplets, colloidal particles and single cells with the
+precision and parallelization of modern-day computer hardware has profound applications for
+biochemical detection, gene sequencing, chemical synthesis and highly parallel analysis of
+single cells. Drawing inspiration from general circuit theory and magnetic bubble technology,
+here we demonstrate a class of integrated circuits for executing sequential and parallel,
+timed operations on an ensemble of single particles and cells. The integrated circuits are
+constructed from lithographically deﬁned, overlaid patterns of magnetic ﬁlm and current lines.
+The magnetic patterns passively control particles similar to electrical conductors, diodes and
+capacitors. The current lines actively switch particles between different tracks similar to gated
+electrical transistors. When combined into arrays and driven by a rotating magnetic ﬁeld
+clock, these integrated circuits have general multiplexing properties and enable the precise
+control of magnetizable objects.
+
+1 Department of Emerging Materials Science, Daegu Gyeongbuk Institute of Science and Technology (DGIST), Daegu 711-873, Republic of Korea. 2 School of
+Engineering, Chungnam National University, Daejeon 305-764, Republic of Korea. 3 Department of Mechanical Engineering and Materials Science, Duke
+University, Box 90300 Hudson Hall, Durham, North Carolina 27708, USA. 4 University of Michigan–Shanghai Jiao Tong University Joint Institute, Shanghai
+Jiao Tong University, Shanghai 200240, People’s Republic of China. 5 SKKU Advanced Institute of Nanotechnology (SAINT), School of Chemical Engineering,
+Sungkyunkwan University, Suwon 440-746, Republic of Korea. * These authors contributed equally to this work. Correspondence and requests for materials
+should be addressed to B.B.Y. (email: yellen@duke.edu) or to C.K. (email: cgkim@digst.ac.kr).
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+1
+
+ARTICLE
+ne of the main goals of lab-on-a-chip research is to
+develop generic platforms for manipulating small ﬂuid
+droplets, colloidal particles and single cells with the
+ﬂexibility, scalability and automation of modern-day computer
+circuits. Single-cell arrays represent one high impact application
+of lab-on-a-chip tools, which are increasingly being adopted to
+evaluate rare biological responses in small-cell subsets that are
+overlooked by the ensemble averaging approaches of traditional
+biology. Improved understanding of these rare cellular responses
+can profoundly impact the development of vaccines and
+pharmaceuticals for curing infectious diseases and cancer1,2;
+however there are few existing techniques with the scale and
+ﬂexibility to unmask single-cell heterogeneity and pave the way
+for new medical breakthroughs3–7.
+In particular, there is an urgent need for tools to organize large
+arrays of single cells and single-cell pairs, evaluate the temporal
+responses of individual cell and cell-pair interactions over long
+durations, and retrieve speciﬁc cells from the array for follow-on
+analyses. The desired capabilities of single-cell arrays bear strong
+resemblance to random access memory (RAM) computer chips,
+including the ability to introduce and retrieve single cells from
+precise locations of the chip (writing data), and query the
+biological state of speciﬁed cells at future time points (reading
+data). Existing particle handling tools based on hydrodynamic8–11,
+optic12–18, electric19–22 and magnetic23–36 trapping forces can
+achieve parts of this desired functionality; however, no single
+technique to our knowledge encompasses the scalability, ﬂexibility
+and automation that allows single-cell chips to perform with the
+level of integration of computer circuits.
+Our approach has signiﬁcant similarities with magnetic bubble
+memory technology37, which was originally developed to store
+memory and implement logic through the precise manipulation
+of ‘magnetization bubbles’ in iron garnet ﬁlms. Previous works
+demonstrated that magnetization bubbles could be moved along
+speciﬁc tracks and into desired storage locations by controlling
+the electrical and magnetic circuitry patterned on top of the
+garnet ﬁlms. Magnetic patterns were used to establish a network
+of highways to move the magnetization bubbles in controlled
+directions along the pathways of minimum magnetic energy.
+Current lines were used to switch the bubbles between different
+highways and store them locally as digital memory.
+Here, we use a combination of magnetic patterns and current
+lines to instead control an aqueous suspension of magnetic
+particles and magnetic-nanoparticle-labelled cells that behave like
+magnetization bubbles suspended in thin ﬂuid ﬁlms. The
+magnetic patterns are used to create passive circuitry analogous
+to the lumped element conductors, capacitors and diodes of
+electronic circuits. The current lines are used to establish active
+circuitry for switching particles and cells between different tracks.
+When combined together into small arrays, we demonstrate a
+scalable platform with general multiplexing properties, thereby
+paving the way for the development of digital circuitry for
+parallelized control of matter.
+Magnetic-microparticles and magnetic-nanoparticle-labelled
+single cells can be reasonably approximated as magnetic point
+dipoles if they are exposed to weakly inhomogeneous magnetic
+ﬁeld distributions on the length scale of the particle. In such cases,
+the magnetic objects are moved towards the nearest locations of
+the instantaneous minima of the magnetostatic potential energy
+that occurs where the local substrate ﬁeld is parallel to the
+external ﬁeld. By shifting the energy minima across the substrate
+in a programmable manner, the trajectory of single particles can
+be precisely controlled. If the magnetic ﬁeld distribution is
+modulated in time at a sufﬁciently slow rate, a simple model can
+demonstrate the similarity between current of magnetic particles
+and Ohm’s law for electrical circuits, thereby providing
+2
+
+1
+
+0
+
+a
+
+e
+
+b
+
+f
+
+c
+
+g
+
+d
+
+h
+
+y
+
+i 300
+
+
+
+250
+Bead speed (µm s–1)
+
+O
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+x
+
+7.96 kA m–1
+9.95 kA m–1
+11.94 kA m–1
+
+200
+150
+100
+50
+0
+0
+
+5
+
+10
+15
+Frequency (Hz)
+
+20
+
+Figure 1 | Particle conduction. The potential energy landscape for a
+2.8-mm-diameter magnetic bead with magnetic susceptibility of wv ¼ 0.65
+is shown as it moves around the half-disk track (10-mm diameter,
+100-nm-thick NiFe permalloy ﬁlm) at the external ﬁeld angles of j ¼ 180°,
+120°, 60° and 0°. Its motion in a clockwise 7.96 kA m  1 rotating ﬁeld is
+presented in a–d. Blue and red colours designate the energy minima and
+maxima, respectively. Corresponding experimental images for the magnetic
+bead trajectory are shown as the dotted white line in e–h. The red arrows
+denote the instantaneous magnetic ﬁeld direction. The velocity versus
+frequency relationship for the bead motion is presented in i for rotating ﬁeld
+strengths of 7.96, 9.95 and 11.94 kA m  1. A schematic of the ﬁeld angle
+relative to the track is shown in the inset. The average particle velocity is
+determined from the time required to travel across 10 periods of the
+magnetic track, represented as the average (square data point) and s.d.
+(error bars). The theoretical ﬁt represents an analytical solution to the
+nonlinear oscillator. The multiplication factor for colour bar is 1.6  105 kBT.
+Scale bars, 5 mm.
+
+motivation for pursuing more complex circuit analogies. The
+magnetostatic potential energy of a spherical superparamagnetic
+particle with linear volumetric susceptibility, wv, in a space- and
+time-varying magnetic ﬁeld B is given by:
+1w V 2
+B;
+ð1Þ
+U ð~
+r; t Þ ¼  v ~
+2 m0
+where, V is the volume of the particle, m0 is the vacuum
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+permeability and B ¼ Bext þ Bsub is the total magnetic ﬁeld
+generated at the particle centre, which is the sum of a uniform
+rotating external ﬁeld, Bext(t), and a space–time-varying substrate
+ﬁeld, Bsub(r,t). The local ﬁeld reaches a maximum at locations
+where the external ﬁeld adds to the local substrate ﬁeld (when the
+in-plane component of Bsub is instantaneously parallel with Bext),
+and manifests as a potential energy minimum because of the ﬁeld
+squared dependence. Conversely, when the local substrate ﬁeld
+partially cancels the external ﬁeld (when the in-plane component
+of Bsub is instantaneously antiparallel with Bext), the local
+potential energy is at a maximum and manifests as a local energy
+barrier.
+We intentionally design an asymmetry in the substrate
+periodicity so that the energy minima can be moved smoothly
+along desired pathways. We achieve this with a geometry of
+linearly magnetizable disks, whose magnetization attempts to
+synchronize with the rotating ﬁeld direction. The lack of strong
+hysteresis of the magnetic patterns (Supplementary Fig. 1)
+justiﬁes this linear approximation. From classical magnetostatics39, it is well known that the locations of energy minimum
+for linear magnetizable systems will occur at positions where the
+outward normal of the ﬁlm curvature is aligned parallel to the
+external ﬁeld (depicted as the blue regions in simulations of
+Figs 1–5). By rotating the external magnetic ﬁeld in-plane, the
+locations of the energy minima are continuously shifted around
+the perimeter of the disk. For substrates consisting of a linear
+array of half disks connected by linear segments, the motion of
+the energy minima shifts continuously from one half disk to the
+next, moving exactly two disk periods, D, for each cycle of the
+rotating ﬁeld. The particle transport process is thus similar to a
+ratchet (or step motor) that transports objects along controlled
+directions in discrete steps. Here, the local magnetic energy
+minima can be conceptualized as the nodes in the ratchet.
+The particle currents can be approximated mathematically by
+modelling the tangential force, Ft, of a magnetic particle around
+the circumference of a thin disk-shaped micro-magnet:
+Ft ¼ f ðZ; yÞsinð2c  2oext t Þ;
+
+Results
+Conductors for reversible current ﬂow. Figure 1 presents the
+particle trajectory as a function of the time-varying ﬁeld angle,
+f ¼ oextt, where increasing angles correspond to a counterclockwise rotating ﬁeld. Simulations of the potential energy distribution (Fig. 1a–d) compared with the experimental trajectory
+(Fig. 1e–h) demonstrate that the particle position is correlated to
+the shifting regions of potential energy minima (blue). The particles move along the upper section of the track because it has the
+deepest energy minima. The linear segment connecting adjacent
+magnets provides an energy barrier that conﬁnes the local energy
+minima to one side of the magnetic track.
+For sufﬁciently low driving frequencies, the particles move
+exactly two array periods for each complete cycle of ﬁeld rotation,
+demonstrating the linear relationship between frequency and
+magnetic particle current for the phase-locked regime (Fig. 1i).
+Clockwise ﬁeld rotation leads to particle motion along the
+positive x direction, whereas counter-clockwise rotation produces
+motion along the negative x direction (Supplementary Movie 1).
+The asymmetry in the track design is essential for achieving a net
+particle current. If the track were designed with full disks instead
+of half disks, then the particles conﬁned to the lower portion of
+the track would move in the opposite direction of the particles on
+the upper portion, thereby negating net current ﬂow. At higher
+frequencies, the particles enter the phase-slipping regime, and the
+analogies with Ohm’s law breaks down (Fig. 1i).
+
+ð2Þ
+
+where f(Z,y) is the forcing magnitude, which depends on the
+external ﬁeld as well as geometric and material properties. The
+coordinates Z and y represent the position of the particle centre in
+oblate spheroid coordinates, which is the most natural coordinate
+system to model the particle trajectory around a thin disk, and
+leads to convenient analytical expressions. In equation (2), the
+parameter c represents the angular location of the particle
+relative to the horizontal axis, and oext is the frequency of the
+rotating external ﬁeld. When re-written in the travelling reference
+frame by using the change of variable, O ¼ c  oextt, the
+dynamics is equivalent to the ratchet motion of a non-uniform
+oscillator: dO/dt ¼ –oext þ oc sin(2O), where oc ¼ f(Z,y)/6pZfRpD
+is the maximum driving frequency that satisﬁes the linear
+regime of Ohm’s law for a particle of radius, Rp, in a ﬂuid
+of viscosity, Zf. The parameter, O, represents the phase lag of
+the bead behind the nearest energy minima. For subcritical
+frequencies (oextroc), the phase lag is small but constant
+(2Orp/2), allowing the particle ﬁnd a stable phase where
+dO/dt ¼ 0, called the phase-locked regime. In this regime, the
+particle moves deterministically with time-averaged velocity:
+^ ext ^r Þ;
+vi ¼ 2Doext ðo
+h~
+
+At higher frequencies (oext4oc), the particle’s phase lag is no
+longer able to satisfy the inequality 2Orp/2 because of the
+increase in viscous force beyond a critical threshold, which cause
+the particle to periodically slip out of a given potential energy
+minima into the nearest adjacent minima. The resulting phaseslipping motion is characterized by oscillating attractive and
+repulsive forces on the particle and an overall decrease in the
+particle’s time-averaged velocity, as well as periodic changes in
+direction.
+
+ð3Þ
+
+^ ext is the sense of the rotating external ﬁeld, and ^r is
+where o
+the unit vector pointing away from the centre of a given disk.
+The linear relationship between frequency and magnetic
+particle current (Ib ¼ oext/Rb) behaves analogously to Ohm’s
+law (Ie ¼ V/Re), in which the resistance, Rb, is inversely related to
+the pattern periodicity, 2D.
+
+Rectiﬁers for irreversible current ﬂow. Rectiﬁcation is accomplished by introducing additional asymmetry in the conductor
+paths, such as by joining two magnetic tracks in a T-shaped
+junction (Fig. 2). In the forward-biased mode (Fig. 2a–h), the
+particle initially moves from left to right on the horizontal track
+in the positive x direction. When the particle reaches the
+T-junction, the two potential energy minima on either side of the
+junction merge together (see the transition of the two blue regions
+in Fig. 2a into one blue region in Fig. 2b), which permits the
+particle to jump over the linear vertical segment. After surmounting this barrier, the particle continues its horizontal path
+along the positive x direction in sync with the rotating ﬁeld.
+Alternatively, if a particle were initially moving in the negative
+y direction on the vertical track, then it also turns toward the
+positive x direction at the T-junction. This asymmetric track
+design ensures that regardless of the origin of the particle
+currents, matter will eventually ﬂow along the positive x direction
+in a clockwise rotating ﬁeld.
+An example of the reversed bias rectiﬁcation mode can be
+observed in the counter-clockwise driving ﬁeld (Fig. 2i–p), in
+which the particle moves along the negative x direction of the
+horizontal track. When the particle reaches the T-junction, the
+single energy minima (Fig. 2j) splits into two blue/green metastable
+energy minima (Fig. 2k). See Supplementary Figs 2 and 3 for more
+detailed illustration of the energy pathways. The slightly red region
+directly on top of the vertical segment of the magnetic track in
+Fig. 2k depicts a local energy barrier that prevents the particle from
+crossing over the linear vertical segment. Instead, the particle
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+3
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+1
+
+0
+
+a
+
+e
+
+i
+
+m
+
+b
+
+f
+
+j
+
+n
+
+c
+
+g
+
+k
+
+o
+
+d
+
+h
+
+l
+
+p
+
+q
+
+120
+
+Reverse
+
+Forward
+Phase-locked
+
+Phase-slipping
+
+Bead speed (µm s–1)
+
+100
+
+80
+
+60
+
+40
+
+20
+
+Counterclockwise
+rotation
+
+Clockwise
+rotation
+
+0
+–4
+
+–2
+
+0
+
+2
+4
+Frequency (Hz)
+
+6
+
+8
+
+10
+
+Figure 2 | Particle rectiﬁcation. The potential energy landscape in a clockwise 7.96 kA m  1 rotating ﬁeld in the forward-biased diode mode is shown when
+the external ﬁeld has angular orientation of j ¼ 180°, 105°, 45° and 0° as presented in a–d. The red arrows denote the instantaneous external ﬁeld
+direction. The blue energy minima correspond to the particle locations in the experimental images of e–h. The potential energy landscape for the reverse
+conditions for ﬁeld angles of j ¼ 0°, 75°, 135° and 180° is presented in i–l along with the associated experimental images in m–p. The velocity versus
+frequency relationship for the matter rectiﬁer is presented in q. The average particle velocity is determined from the time required to travel across 10
+periods of the magnetic track, represented as the average (square data point) and s.d. (error bars). The theoretical ﬁt represents an analytical solution to
+the nonlinear oscillator. The multiplication factor for colour bar is 1.6  105 kBT. Scale bars, 5 mm.
+
+follows the deeper energy minimum that moves in the positive y
+direction and enforces the asymmetry of the conduction mechanism. The overall effect is that particles can conduct along the
+positive x direction in a clockwise rotating ﬁeld, but cannot
+conduct along the negative x direction in a counter-clockwise
+rotating ﬁeld. The irreciprocal motion of the particle pathway is
+4
+
+also depicted in Supplementary Movie 2. The velocity versus
+frequency relationship for the matter rectiﬁer is presented in
+Fig. 2q. Note that the critical frequency that deﬁnes the transition
+between the phase-locked and phase-slipping regimes is lowered
+for the diode relative to the conductor track of Fig. 1, owing to the
+modiﬁed energy landscape of the T-junction.
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+a
+
+b
+
+c
+
+d
+
+e
+
+Figure 3 | Local storage of magnetically labelled single cells. Bright-ﬁeld and ﬂuorescent images of (a) single T lymphocytes and (b) B lymphocytes
+trapped in individual apartments are shown. Real-time analysis of biological process, such as mitosis, can be observed in c. A homogeneous pairing of
+(d) B lymphocytes and a heterogeneous pairing (e) of a B- and T lymphocytes can be trapped in a single apartment, demonstrating the ability to arrange
+single-cell pairs. Scale bars, 40 mm.
+
+0
+
+1
+
+d
+
+a
+
+I
+
+b
+
+e
+
+I
+
+c
+
+f
+
+I
+
+Figure 4 | Type I transistor for local switching of single particles and cells. A small gap fabricated between two adjacent magnets allows a single particle
+to be selectively transported in the positive or negative x direction based on whether a 100-mA current applied is turned ON or OFF. Parts a–c show
+the potential energy landscape, and the experimental trajectory (white dotted line) of a single particle or cell when the current line is OFF. Parts d–f show
+the same conditions when the current is ON. The merger of the energy minima causes the particles to move across the gap only when the current
+line is ON. The red arrows denote the instantaneous external ﬁeld direction. The multiplication factor for colour bar is 1.6  105 kBT. Scale bars, 20 mm.
+
+Capacitors for local storage of single particles and cells.
+Rectiﬁcation and conduction pathways can be geometrically
+arranged in closed loops to store small single particles and cells in
+well-deﬁned spatial regions, operating in a manner similar to an
+electrical capacitor. Figure 3a shows an array of magnetic conduction tracks and square apartments that are conﬁgured such
+that the T-junction entry way is in the forward bias mode and
+allows particles or cells to enter the apartment. In a clockwise
+
+driving ﬁeld, single immune cells labelled with 50-nm magnetic
+nanoparticles are moved into the apartments, where they subsequently remain trapped in a closed spatial orbit. Upon reversing
+the ﬁeld rotation, the cells remain trapped in their apartments
+because of the reverse bias of the diode junction (Supplementary
+Movie 3). By this mechanism, single T- and B-cell lymphocytes
+(Supplementary Movie 4) can be arrayed in individual apartments that allows for long-term analysis of single cells and
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+5
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+0
+
+1
+
+a
+
+d
+
+1
+
+2
+
+b
+
+3
+
+I
+
+1
+
+e
+
+c
+
+1
+3
+
+3
+
+2
+
+f
+
+1
+
+2
+
+3
+
+I
+
+1
+2
+
+2
+
+3
+
+1
+
+2
+
+3
+
+Figure 5 | Type II transistor for particle rectiﬁcation reversal. A diagonal current line superimposed on the T-junction is used to selectively transfer single
+particles across the junction. Parts a,d show the potential energy landscape and its associated experimental image when the current is OFF for three
+particles approaching the junction. Parts b,e show the potential energy landscape and its associated experimental image when the current is ON, after the
+ﬁrst particle has passed, but before the second and third particles have reached the junction. Parts c,f show the potential energy landscape and its
+associated experimental image when the current is OFF. Only the second particle crossed the junction in the negative x direction, whereas the ﬁrst and third
+particles are moved in the positive y direction. The red arrows depict the external ﬁeld direction. The white arrows depict the future direction of the
+magnetic beads. The multiplication factor for colour bar is 1.6  105 kBT. Scale bars, 20 mm.
+
+visualization of biological processes such as cell mitosis (Fig. 3d).
+The ability to trap pairs of cells in individual apartments,
+including a homogeneous pair of B-lymphocyte cells (Fig. 3e) or a
+heterogeneous pair of B- and T-lymphocyte cells (Fig. 3f), can
+serve as a platform for studying single cell–cell communication.
+Type I transistors for local matter switching. The ability to
+perform selective operations on a speciﬁc particle or cell within a
+large array can be accomplished by combining passive transport
+elements with locally addressible active elements to switch
+particles along different tracks as well as into (or out of) a local
+apartment. Here we show one mechanism for switching a particle
+between two different pathways by creating a controlled gap
+between two disks in the magnetic track. A current line placed at
+one edge of the gap generates a competing magnetic ﬁeld that
+tunes the local energy landscape and switches the particle
+between conductive and non-conductive states. This transport
+behaviour has analogies with the action of a gate electrode in
+switching currents at a semiconducting junction. When the current is OFF, the energy landscape is a bistable double-well
+potential, which can be visualized as the two blue energy minima
+regions on either side of the gap in Fig. 4a. The double-well
+potential restricts the particle to one side of the gap and reverses
+its direction of motion (white dotted in line in Fig. 4b,c). When
+the 100 mA current is ON, the two bistable energy minima
+6
+
+merges into a single energy minimum that causes the gap to
+become conductive and moves the particles across the gap along
+the positive x direction (black dotted line in Fig. 4e,f). By timing
+the current pulses in sync with the rotating magnetic ﬁeld clock,
+it is possible to selectively transfer one particle while
+preventing another particle from crossing the gap (Fig. 4b,e and
+Supplementary Movie 5). Selective operations can also be
+performed on single cells (Fig. 4e,f and Supplementary Movie 6).
+In Fig. 4e,f, pseudo-coloring is used to increase the contrast of the
+cell relative to the background.
+Type II transistors for local matter switching. In some
+applications, it is necessary to retrieve a particle or cell from
+conﬁnement to perform genome sequencing or follow-on
+analysis. This functionality requires the ability to reverse the
+rectiﬁer bias and allow a single particle or cell to escape from the
+apartment. Here we place a diagonal current line oriented at a 60°
+angle relative to the horizontal axis on the opposite side of the
+rectiﬁer junction that allows the particle to escape the apartment
+when a gate current is applied. When the 100 mA current is ON,
+the bistable energy minima on either side of the junction of
+Fig. 5a merge together into a single energy minimum on top of
+the junction, as shown in Fig. 5b. The subsequent motion of the
+energy minima of Fig. 5c is modulated by the applied current that
+removes the energy barrier of Fig. 3k and increases the depth of
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+a
+
+a
+1
+
+A
+
+B
+
+Bead+cell
+
+Bead
+
+C
+ll
+
+Ce
+
+ON
+
+OFF
+
+OFF
+
+ON
+
+H
+d
+
+2
+
+Be
+a
+
+Bead
+
+OFF
+
+OFF
+
+OFF
+
+ON
+
+3
+
+b
+OFF
+
+OFF
+
+OFF
+
+Bead+cell
+
+ON
+
+H
+
+Bead
+
+b
+1
+
+c
+
+2
+
+Bead+cell
+
+Bead
+
+3
+
+c
+2
+
+1
+
+Figure 7 | Bioselective logic for separating particles. A small gap
+fabricated between two magnetic patterns is used to selectively separate
+a single bead (black) from a bead þ cell complex (white). The gap is
+designed with an elliptical pattern at the left edge, which tunes the dynamic
+range of particle motion. Part a shows the state before the bead and
+bead þ cell have reached the junction. Part b shows a time immediately
+before the bead þ cell, but after the single bead, has passed the junction.
+Part c shows the state after both the bead and bead þ cell have passed the
+junction. The bead þ cell complex is transferred across the gap, whereas
+the single bead is not. The operating frequency is 2 Hz. Scale bars, 40 mm.
+
+particle, but not the ﬁrst or third particle, to move across the
+junction. The paths of the three particles are illustrated with the
+white arrows and are shown more clearly in Supplementary
+Movie 7 for single particles and Supplementary Movie 8 for
+single cells.
+
+5
+
+3
+4
+Figure 6 | Multiplexed circuits for arraying single particles. An integrated
+circuit containing a 3  3 array of apartments is overlaid with three
+horizontal row switches and three vertical column switches in multiplexed
+format. Part a shows the basic methodology for moving a single particle to
+the upper-right apartment by applying current only to the top row (1) and
+right column (C) current lines. All other current lines are in the OFF state
+and are not populated with single particles. Part b shows the positions of
+the ﬁrst three deposited particles and the destination of a fourth particle.
+Part c shows the array populated with an ‘X’ pattern of single particles.
+Scale bars, 60 mm.
+
+the energy minima on the opposite side of the rectiﬁer junction.
+After passing the junction, the particle continues along the
+negative x direction of the horizontal track. Owing to the deterministic nature of particle transport, the switching process can be
+synchronized with the external ﬁeld clock to permit the second
+
+Multiplexed operations. The 3  3 array of Fig. 6 demonstrates
+one potential multiplexing strategy, in which three horizontal and
+three vertical current lines are used to control the arbitrary
+deposition of up to nine particles. In this implementation, when
+the top row current line is ON while keeping the bottom two row
+current lines OFF (Fig. 6a), particles will be transported along the
+top row magnetic track. If the right column current line is also
+applied, then the particle is eventually deposited in the upperright apartment of Fig. 6a. By timing the current impulses in
+columns 1 and 3, this general procedure is used to deposit
+particles 1 and 2 in the left and right apartments of the top row.
+Next, particles 3 and 4 are deposited in the left and right apartments of the bottom row (Fig. 6c). Finally, particle 5 is deposited
+in the middle apartment of the middle row, thereby generating a
+particle pattern in the shape of an ‘X’. Supplementary Movie 9
+depicts the particle deposition process, and Supplementary Fig. 4
+shows examples of other particle patterns that can be deposited
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+7
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+with this approach. Owing to the deterministic nature of this
+transport mechanism, these circuits can perform timed operations on single particles and cells with knowledge of only their
+initial conditions (position at some previous time) and the
+number of magnetic ﬁeld clock cycles that have passed since the
+previous operation.
+Bioselective logic. In addition to the basic circuit elements and
+integrated circuits presented in Figs 1–6, it is also possible to
+exploit other dynamic regimes to achieve bioselective functionality. The example depicted in Fig. 7 indicates a methodology for
+tuning the gap junction to be non-conductive for single magnetic
+particles but conductive for single magnetic particles attached to
+single T-lymphocyte cells. This sorting mechanism exploits the
+high-frequency regime of the nonlinear oscillator phenomena
+described in equation (2), which allows for particles to transition
+between the phase-locked and phase-slipping states of the ratchet.
+The switching mechanism exploits the lag of a particle that trails
+behind the phase of the translating energy minima by an amount
+O ¼ c  j. The speciﬁc phase lag depends on the radius of
+curvature of the track, viscous friction coefﬁcient of the particle
+and the magnetic properties of the system.
+In the example given in Fig. 7, the elliptical element at the
+junction is used to uniformly lower the critical frequency of the
+system and adjust the dynamic ranges of the two particles. Owing
+to the larger viscous friction coefﬁcient for the bead þ cell
+complex, its critical frequency, oc1, is lower than the critical
+frequency of the single bare bead, oc2, (that is, oc1ooc2). Thus,
+there exists an operating frequency, oext that is higher than the
+critical frequency of the bead þ cell complex, but lower than the
+critical frequency of the single bare bead, (that is, oc1ooext
+ooc2). By satisfying these conditions, the bead þ cell complex is
+in the phase-slipping regime and is ejected out of the local energy
+minima into an adjacent energy minimum on the opposite side of
+the gap via a repulsive force38. However, the bare bead is in the
+phased-locked regime and remains trapped inside its local energy
+minimum on the same side of the gap (Supplementary Movie 10).
+This mechanism can separate multiple different particles based
+on the size of their biological payload, as well as by tuning the size
+of the ellipse and the magnetic system properties. The phaseslipping regime of ratchets has previously been used to separate
+different particles based on size24; however, to our knowledge it
+has not been used to control the overall direction of different
+particles along two separate tracks, allowing for more ﬂexible
+implementation as a bioselective logic mechanism.
+Discussion
+Here we have demonstrated scalable integrated circuits for
+transporting magnetic particles and single cells along programmable pathways in microﬂuidic environments. Towards this goal,
+we have arranged a combination of conductors, rectiﬁers,
+capacitors and transistors in multiplexed format to demonstrate
+the basic skeleton for executing massively parallel operations with
+a mininum number of control wires. The N  N crossbar array
+used in our multiplexing architecture is inspired by the ‘word’ line
+and ‘bit’ line architecture of static RAM circuits. If the circuitry is
+further optimized, we estimate these arrays can store more than
+106 cells in  2 based on the 10-mm lower limit of a typical cell
+diameter. Our clock cycles are probably limited to the 1–10 Hz
+range because of the relatively high ﬂuid viscosity and low
+magnetic forces. Although this performance pales in comparison
+with the speed of modern computer circuits, it is possible to
+increase the scale of operations by partitioning this circuit into
+multicore processor format. Based on these considerations, it is
+not unreasonable to suggest the possibility of performing more
+8
+
+than 106 single-cell operations in an hour, which is on the
+relevant timescale of many cellular processes. This system is thus
+highly relevant to the burgeoning ﬁeld of single-cell informatics
+that requires programmable systems to automate the separation
+of different cells either actively or passively; place single cells and
+single-cell pairs into large arrays; characterize their cellular
+interactions over long times; and selectively retrieve single cells at
+future time points for follow-on analyses.
+Methods
+Materials. Superparamagnetic particles of 2.8-mm diameter (Dynabeads M-280)
+and superparamagnetic beads of 4.5-mm diameter (Dynabeads mouse Pan T;
+Thy1.2) were purchased from Invitrogen, Grand Island, NY, USA. Magnetic
+nanoparticles of 50-nm diameter conjugated with CD90.2 (Thy1.2; T lymphocytes)
+and CD45R (B220; B lymphocytes) were procured from Miltenyi Biotec Inc.,
+Auburn, CA, USA. Silicon wafers coated with 200 nm of SiO2 were obtained from
+Wafermart. Photoresist (AZ 5214-E) and developer was purchased from AZ
+electronic materials. Polydimethylsiloxane (Sylgard 184) was procured from
+Dowhitech Silicone. All chemicals used for cell media were obtained from
+Sigma-Aldrich. Pan T-cell and Pan B-cell isolation kit were procured from Miltenyi
+Biotec Inc. Calcein AM green and red/orange was purchased from Invitrogen.
+Magnetic circuit design. Soft permalloy (Ni82.6Fe17.4) patterns of 100 nm thickness are combined with 200-nm thick conductive Au patterns fabricated on silicon
+or glass substrates using conventional photolithographic lift-off method separated
+by a 150-nm insulating layer of SiO2. The magnetic patterns consisted of an array
+of half disks with either 5 or 10-mm radius, connected by magnetic segments 2 mm
+in length. Magnetic ﬁlm properties were measured by vibrating sample magnetometry (Lakeshore 7400). External rotating magnetic ﬁeld was produced by passing
+current through pairs of solenoid coils with ferrite cores controlled by LabVIEW
+(National Instruments). The sense of ﬁeld rotation was adjusted by applying a
+phase difference, d ¼ ±90° between the orthogonal coils with ﬁeld magnitudes
+ranging from 0 to 15.9 kA m  1. A constant current source was controlled by
+LabVIEW to provide 100 mA DC pulses through the wires to achieve particle
+switching and exiting from the apartment.
+Data analysis. Particle motion was tracked by video microscopy using a
+IMC-1040FT video camera. The average particle velocities were determined from
+the time required to travel across 10 pattern periods. The average and s.d. of the
+velocity data are plotted in the ﬁgures.
+Nanoparticle–lymphocytes conjugation. Lymphocytes were isolated from the
+spleens of C57BL6 mice (KOATECH, Pyeongtaek, Korea) by negative magneticactivated cell sorting using Pan T-cell and Pan B-cell isolation kit, respectively,
+together with lymphocyte separation columns and Midi-magnetic-activated cell
+sorting magnets according to the manufacturer’s instructions (Supplementary
+Fig. 5). The magnetic nanoparticles were immobilized on isolated lymphocytes via
+interaction between antigen expressed in lymphocytes and corresponding antibody
+conjugated to magnetic nanoparticles (Supplementary Fig. 6). The T cells and B
+cells were labelled with calcein dye (green and red/orange, respectively).
+Bioselective logic experiment. The magnetic beads with diameter 4.5 mm were
+immobilized on isolated T lymphocytes from the spleens of C57BL6 mice via
+interaction between antigen expressed in lymphocytes and corresponding antibody
+conjugated to magnetic beads (Supplementary Fig. 7)
+Finite element method. Finite element simulations were performed in Maxwell
+3D software (version 12.2, Ansoft), which used experimentally derived material
+constitutive relationships to model the magnetic ﬁeld distribution and magnetostatic potential energy. Speciﬁcally, we used the experimentally measured
+magnetization hysteresis curve of thin permalloy ﬁlm with 100-nm thickness
+(Supplementary Fig. 1b), from which we obtained the saturation magnetization and
+coercivity value of 668 emu cc  1 and 190 A m  1, respectively. The potential
+energy on the magnetic beads was determined according to equation (1), and is
+plotted as a function of the external ﬁeld orientation.
+Analytical model. In addition, we developed semi-analytical approximations to
+represent the magnetic ﬁeld of thin ﬁlm patterns in the shape of disks, half
+disks, and thin strips connected together in serial arrangements. Although the
+semi-analytical approach comes at the cost of numerical precision, it reduces the
+computational burden to allow for more computationally feasible trajectory
+calculations and presentation of potential energy animations.
+Our ﬁrst concern was to develop a model for the local magnetic ﬁeld that is
+consistent with the shape-induced anisotropy of various ﬁlm geometries, but
+without introducing local numerical artefacts. The geometry of thin disks
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+connected together by short strips can be approximately modelled as an
+overlapping set of paramagnetic ellipsoids and oblate spheroids. This
+approximation has the advantage of accurately capturing the inﬂuence of shapeinduced demagnetizing factors on the local magnetization; however, near the
+overlapping regions this approach introduces spurious magnetic pole distributions
+that inﬂuence the local magnetic ﬁelds and forces. At the other end of the
+modelling spectrum, magnetic thin ﬁlm patterns exposed to in-plane magnetic
+ﬁelds are commonly approximated as line charges around the perimeter of the
+patterned ﬁlm; however, these approximations do not account for shaped-induced
+demagnetizing factors. Ultimately, we settled on a hybrid model that achieves a
+semi-self-consistent solution for local magnetization without introducing spurious
+pole distributions. Although these models represent an approximation to the
+numerically exact, ﬁnite element analyses, they markedly increase the computation
+speed.
+The magnetic ﬁeld of a uniformly magnetized ellipsoid with semi-principal axes
+of length a, b and c along the x-, y- and z directions, respectively, has previously
+been derived by Stratton39. The analytical expression for the magnetic potential
+inside and outside a paramagnetic ellipsoid is given by:
+3
+2
+Z1
+ds
+7
+6
+ð4Þ
+jout ¼ jext þ js ¼ F1 ðxÞF2 ðZÞF3 ðzÞ4C1 þ C2
+5;
+Rs ðs þ a2 Þ
+x
+
+jin ¼ C3 F1 ðxÞF2 ðZÞF3 ðzÞ;
+
+ð5Þ
+
+pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+Rs ¼ ðs þ a2 Þðs þ b2 Þðs þ c2 Þ;
+
+ð6Þ
+
+ﬁeld and ellipsoid
+potential in the
+where jext and js represent the uniform external
+pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+pﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+x direction,
+respectively. The functions F1 ¼ x þ a2 , F2 ¼ Z þ a2 and F3 ¼
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+p
+z þ a2 are one-dimensional orthogonal expansions in the ellipsoidal coordinate
+system, in which the coordinate x can be considered as the radial term, whereas the
+Z and z coordinates represent the angular distribution, with a characteristic length
+scale of Rs for the system. The coefﬁcients, C1, C2 and C3 are determined by
+matching the boundary conditions of equation (4–6) which must satisfy the
+continuity of the magnetic potential and its normal ﬁrst derivative at the boundary:
+jout jx¼0 ¼ jin jx¼0 ;
+
+m0
+
+1 @jout
+hx @x
+
+
+
+ð7Þ
+
+
+¼ m1
+x¼0
+
+1 @jin
+hx @x
+
+
+;
+
+ð8Þ
+
+x¼0
+
+where x ¼ 0 represents ellipsoid’s surface and where m0 and m1 are the magnetic
+permeability outside and inside the ellipsoid, respectively. Similar equations can be
+achieved for the external ﬁeld in the y- and z directions by replacing a in
+equation (1) with b and c, respectively. Owing to the high magnetic permeability of
+permalloy material used in experiments, we make the assumption that m144m0
+with the surrounding medium assumed to be vacuum. The metric coefﬁcient is
+given by:
+
+0:5
+1
+ðx  ZÞðx  zÞ
+hx ¼
+;
+ð9Þ
+2
+2
+2
+2 ðx þ a Þðx þ b Þðx þ c Þ
+After deriving the matching coefﬁcients C1, C2 and C3 and inserting them in
+equations (4–8), the potentials inside and outside the ellipsoid are determined
+to be:
+"
+#
+~
+~
+1 ~
+Bext  ^x
+Bext  ^y
+Bext  ^z
+jin ¼ 
+þ
+þ
+;
+ð10Þ
+m0 Ax ð0; 1Þ Ay ð0; 1Þ Az ð0; 1Þ
+
+jout ¼ jext
+
+
+Ax ð0; xÞ
+Ay ð0; xÞ
+Az ð0; xÞ
+þ
+þ
+;
+Ax ð0; 1Þ Ay ð0; 1Þ Az ð0; 1Þ
+
+Ax ðp; qÞ ¼ 1 þ
+
+
+ Zq
+abc m1  m0
+ds
+;
+m0
+ðs þ x2 ÞRs
+2
+
+ð11Þ
+
+ð12Þ
+
+p
+
+while p and q take values of 0, x and N. Assuming a ¼ b4c, equations (10 and 11)
+can be solved analytically for the magnetic potential of an oblate spheroid40,41;
+however, ellipsoidal solutions require either tabulated integrals or direct evaluation
+of the Ai components through numerical integration.
+In experiments, the magnetic tracks are formed from a thin continuous ﬁlm
+composed of magnetic disks (or half disks) connected by short linear segments.
+The ellipsoidal models described above are a good approximation for the ﬁeld
+distributions far from the intersections of the disk and linear segments; however,
+these approximations produce spurious poles at the intersection points that do not
+match the expected pole distribution of these geometries. In order to reduce these
+inconsistencies, we further reﬁne our model to approximate the substrate as a
+continuous line charge spanning the areal perimeter of the magnetic tracks. By
+matching the line charge model with the ellipsoidal model, we ensure that the
+shape-induced demagnetizing factors reﬂect the local magnetization of different
+parts of the pattern without introducing spurious poles. The advantage of this
+approach is that the simulation time for calculating the magnetic ﬁeld of the
+substrate can be reduced from days to minutes.
+
+The magnitude of the line charge density is determined by the local
+magnetization mismatch across the materials boundary at the edges of the
+magnetic ﬁlm. The divergence condition inside uniformly magnetized ellipsoids is
+represented as a surface charge distribution:
+
+
+~out  H
+~in  n
+^;
+sM ¼ H
+ð13Þ
+where Hout and Hin are the ﬁelds outside and inside the ellipsoid, respectively, with
+n representing the local outward normal of the ellipsoid curvature. Since the
+magnetic patterns of experiment are very high aspect ratio (approximately ﬂat), the
+majority of magnetic poles are conﬁned to the edges of the ellipsoid, which allow it
+to be approximated as a line charge with density:
+l ¼ gcsM ;
+
+ð14Þ
+
+where 2c is the thickness of the ﬁlm. We use a numerical matching coefﬁcient, g, in
+order to match the far ﬁeld approximation of the line charge model with the
+ellipsoid model. This matching coefﬁcient is determined by least squares analysis
+between the volume averaged ﬁeld of the line charge from equation (14) and the
+analytical solution for the ellipsoid’s ﬁeld from equations (10 and 11). In the
+experimental geometries, the value of g is found to be 0.124 and 0.0406 for the disk
+and linear segments, respectively.
+The linear segments are approximated as a spatially constant line charge, which
+varies with the time-varying vector product between the ﬁeld direction and the
+substrate normal. The disk segments are approximated as a continuously varying
+line charge density with the maximum occurring at the location where the
+substrate normal is parallel to the external ﬁeld.
+The line charge density of equation (14) varies in time due with angular rotation
+of the external ﬁeld, oext. By accounting for this time-varying substrate pole
+density, we obtain an approximation of the magnetic potential by performing
+one-dimensional integrations over the exterior of the of the magnetic pattern as
+follows:
+I
+^s ; t Þ
+m
+lð n
+jout ¼ 0
+dls ;
+ð15Þ
+4p j~
+r ~
+rs j
+where j~
+r ~
+rs j represents the distance between an element of the line charge and the
+observation point. The line charge density, l(t), varies with time and the outward
+normal of the local pattern curvature, ns. The magnetic ﬁeld is determined by
+taking the negative gradient of the magnetic potential.
+For the active switches, we assume the current lines are inﬁnitely thin compared
+with the planar dimensions. The magnetic ﬁeld produced by these sheet currents
+can be calculated from the Biot–Savart law:
+Z Z ~
+K ð~
+rs Þð~
+m
+r ~
+rs Þ
+~
+Bð~
+rÞ ¼ 0
+dS;
+ð16Þ
+4p
+r ~
+r s j3
+j~
+S
+
+where ~
+K ð~
+rs Þ is the magnitude of the local sheet current, and j~
+r ~
+rs jis the location of
+the observation point, r, relative to the source point, rs. For simplicity, we assume
+that the sheet currents do not interact with the magnetization patterns, and that the
+currents are uniformly distributed within the current lines.
+The magnetic force on particles exposed to this combination of time-varying
+magnetic ﬁelds is approximated as the force of a point dipole in an external ﬁeld
+gradient:
+~
+~  rÞ~
+F ¼ ðm
+B:
+
+ð17Þ
+
+The force in the vertical direction, Fz, is ignored as it is usually o0 and is therefore
+attractive towards the surface. The moments of the magnetic beads (or magnetized
+biological particles) are assumed to obey a linear relationship with the ﬁelds given
+by: m ¼ wvVB/m0, which is valid for ﬁelds kept below the saturation magnetization
+of 120 Oes for commonly available magnetic beads.
+For small particles in aqueous ﬂuids, the particle motion is typically modelled
+with overdamped ﬁrst order equations of motion. The particle velocity is assumed
+to be proportional to the magnetic force and inversely proportional to the Stoke’s
+friction coefﬁcient for a sphere in a quiescent ﬂuid, 6pZfRp. The particle trajectory
+is determined by integrating the velocity in a simple forward difference scheme,
+ri ¼ ri  1 þ vi  1 Dt, in which the particle position at the ith timestep, ri, is
+determined from its position and velocity at the previous timestep, ri  1 and
+vi  1.The timestep, Dt, is chosen to simultaneously optimize numerical convergence
+and computational expense.
+
+References
+1. Dominguez, M. H. et al. Highly multiplexed quantitation of gene expression on
+single cells. J. Immunol. Methods 391, 133–145 (2013).
+2. Ma, C. et al. A clinical microchip for evaluation of single immune cells reveals
+high functional heterogeneity in phenotypically similar T cells. Nat. Med. 17,
+738–743 (2011).
+3. Prakash, M. & Gershenfeld, N. Microﬂuidic bubble logic. Science 315, 832–835
+(2007).
+4. Unger, M. A., Chou, H.-P., Thorsen, T., Scherer, A. & Quake, S. R. Monolithic
+microfabricated valves and pumps by multilayer soft lithography. Science 288,
+113–116 (2000).
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+9
+
+ARTICLE
+
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms4846
+
+5. Love, K. R., Bagh, S., Choi, J. & Love, J. C. Microtools for single-cell analysis in
+biopharmaceutical development and manufacturing. Trends Biotechnol. 31,
+280–286 (2013).
+6. Yin, H. B. & Marshall, D. Microﬂuidics for single cell analysis. Curr. Opin.
+Biotechnol. 23, 110–119 (2012).
+7. Lindstrom, S. & Andersson-Svahn, H. Overview of single-cell analyses:
+microdevices and applications. Lab. Chip 10, 3363–3372 (2010).
+8. Skelley, A. M., Kirak, O., Suh, H. Y., Jaenisch, R. & Voldman, J. Microﬂudic
+control of cell pairing and fusion. Nat. Methods 6, 147–152 (2009).
+9. Di Carlo, D., Irimia, D., Tompkins, R. G. & Toner, M. Continuous inertial
+focusing, ordering, and separation of particles in microchannels. Proc. Natl
+Acad. Sci. USA 104, 18892–18897 (2007).
+10. Kuntaegowdanahalli, S. S., Bhagat, A. A. S., Kumar, G. & Papautsky, I.
+Inertial microﬂuidics for continuous particle separation in spiral
+microchannels. Lab. Chip 9, 2973–2980 (2009).
+11. Herzenberg, L. A. et al. The history and future of the ﬂuorescence activated cell
+sorter and ﬂow cytometry: a view from Stanford. Clin. Chem. 48, 1819–1827
+(2002).
+12. Ashkin, A. Optical trapping and manipulation of neutral particles using lasers.
+Proc. Natl Acad. Sci. USA 94, 4853–4860 (1997).
+13. Block, S. M., Goldstein, L. S. & Schnapp, B. J. Bead movement by single kinesin
+molecules studied with optical tweezers. Nature 348, 348–352 (1990).
+14. Xiao, K. & Grier, D. G. Sorting colloidal particles into multiple channels with
+optical forces: Prismatic optical fractionation. Phys. Rev. E 82, 051407 (2010).
+15. Roichman, Y., Wong, V. & Grier, D. G. Colloidal transport through optical
+tweezer arrays. Phys. Rev. E 75, 011407 (2007).
+16. Pelton, M., Ladavac, K. & Grier, D. G. Transport and fractionation in periodic
+potential-energy landscapes. Phys. Rev. E 70, 031108 (2004).
+17. Ladavac, K., Kasza, K. & Grier, D. G. Sorting mesoscopic objects with periodic
+potential landscapes: Optical fractionation. Phys. Rev. E 70, 010901 (2004).
+18. Chiou, P. Y., Ohta, A. T. & Wu, M. C. Massively parallel manipulation of single
+cells and microparticles using optical images. Nature 436, 370–372 (2005).
+19. Kortmann, H. et al. The Envirostat-a new bioreactor concept. Lab. Chip 9, 576–
+585 (2009).
+20. Gascoyne, P. R. C. & Vykoukal, J. Particle separation by dielectrophoresis.
+Electrophoresis 23, 1973–1983 (2002).
+21. Green, N. G. & Morgan, H. Dielectrophoretic separation of nano-particles.
+J. Phys. D Appl. Phys. 30, L41–L44 (1997).
+22. Pethig, R. Review Article-Dielectrophoresis: Status of the theory, technology,
+and applications. Biomicroﬂuidics 4, 022811 (2010).
+23. Gao, L., Tahir, M. A., Virgin, L. N. & Yellen, B. B. Multiplexing
+superparamagnetic beads driven by multi-frequency ratchets. Lab. Chip 11,
+4214–4220 (2011).
+24. Yellen, B. B. et al. Traveling wave magnetophoresis for high resolution chip
+based separations. Lab. Chip 7, 1681–1688 (2007).
+25. Ouyang, Y., Tahir, M. A., Lichtenwalner, D. J. & Yellen, B. B. Origin of
+multiplexing capabilities of multifrequency magnetic ratchets. Phys. Rev. E 85,
+041407 (2012).
+26. Gao, L., Gottron, III N., Virgin, L. & Yellen, B. B. The synchronization of
+superparamagnetic beads driven by a micro-magnetic ratchet. Lab. Chip 10,
+2108–2114 (2010).
+27. Friedman, G. & Yellen, B. B. Magnetic separation, manipulation and assembly
+of solid phase in ﬂuids. Curr. Opin. Colloid Interface Sci. 10, 158–166 (2005).
+28. Kose, A. R., Fischer, B., Mao, L. & Koser, H. Label-free cellular manipulation
+and sorting via biocompatible ferroﬂuids. Proc. Natl Acad. Sci. USA 106,
+21478–21483 (2009).
+29. Tierno, P., Sagues, F., Johansen, T. H. & Fischer, T. M. Colloidal transport on
+magnetic garnet ﬁlms. Phys. Chem. Chem. Phys. 11, 9615–9625 (2009).
+30. Tierno, P., Reddy, S. V., Yuan, J., Johansen, T. H. & Fischer, T. M. Transport of
+loaded and unloaded microcarriers in a colloidal magnetic shift register. J. Phys.
+Chem. B 111, 13479–13482 (2007).
+31. Gunnarsson, K. et al. Programmable motion and separation of single magnetic
+particles on patterned magnetic surfaces. Adv. Mater. 17, 1730–1734 (2005).
+
+10
+
+32. Venu, R. et al. On-chip manipulation and trapping of microorganisms
+using a patterned magnetic pathway. Microﬂuid. Nanoﬂuid. 14, 277–285
+(2013).
+33. Anandakumar, S. et al. Translocation of bio-functionalized magnetic beads
+using smart magnetophoresis. Biosens. Bioelectron. 26, 1755–1758 (2010).
+34. Rapoport, E. & Beach, G. S. D. Dynamics of superparamagnetic microbead
+transport along magnetic nanotracks by magnetic domain walls. Appl. Phys.
+Lett. 100, 082401 (2012).
+35. Lee, H., Liu, Y., Ham, D. & Westervelt, R. M. Integrated cell manipulation
+system--CMOS/microﬂuidic hybrid. Lab. Chip 7, 331–337 (2007).
+36. Lee, H., Purdon, A. M., Chu, V. & Westervelt, R. M. Controlled assembly of
+magnetic nanoparticles from magnetotactic bacteria using microelectromagnets
+arrays. Nano Lett. 4, 995–998 (2004).
+37. Chang, H. Magnetic Bubble Technology: Integrated Circuit Magnetic for Digital
+Storage and Processing (IEEE Press, 1975).
+38. Hu, X., Lim, B., Jeong, I., Adarsh, S. & Kim, C. Optimization of pathway pattern
+size for programmable biomolecule actuation. IEEE Trans. Magn. 49, 408–413
+(2013).
+39. Stratton, J. A. Electromagnetic Theory (McGraw Hill Book Company, 1941).
+40. Tejedor, M., Rubio, H., Elbaile, L. & Iglesias, R. External ﬁelds created by
+uniform magnetized ellipsoids and spheroids. IEEE Trans. Magn. 31, 830–836
+(1995).
+41. Chang, H. Fields external to open-structure magnetic devices represented by
+ellipsoid or spheroid. Br. J. Appl. Phys. 12, 160–163 (1961).
+
+Acknowledgements
+This research was supported by Basic Science Research Program through the National
+Research Foundation of Korea(NRF) funded by the Ministry of Science, ICT and Future
+Planning (NRF-2013R1A1A2065222), National Science Foundation (CMMI-0800173),
+China’s Youth 1000 Scholars Plan, and the Research Triangle Materials Research Science
+and Engineering Center (DMR-1121107).
+
+Author contributions
+B.L. designed and fabricated the magnetic patterns and performed the experiments;
+V.R. performed the cell experiments and contributed to the discussion and manuscript
+preparation; X.H. performed computational simulations of the energy landscape in
+MAXWELL; K.K. contributed to the experimental setup; R.A.-N. performed
+analytical simulations of the energy landscapes and created the Supplementary
+Animations; M.J. contributed to the manuscript preparation; Y.-W.N. supplied
+lymphocytes; Y.T.L. contributed to the discussion for cell experiments; B.B.Y. derived
+the analytical model for bead conduction, co-guided the research, and co-wrote the
+manuscript; C.K. oversaw the project including analysis, discussion, and conceptual
+guidance and co-wrote the manuscript.
+
+Additional information
+Supplementary Information accompanies this paper at http://www.nature.com/
+naturecommunications
+Competing ﬁnancial interests: The authors declare no competing ﬁnancial interests.
+Reprints and permission information is available online at http://npg.nature.com/
+reprintsandpermissions/
+How to cite this article: Lim, B. et al. Magnetophoretic circuits for digital control of
+single particles and cells. Nat. Commun. 5:3846 doi: 10.1038/ncomms4846 (2014).
+This work is licensed under a Creative Commons Attribution 3.0
+Unported License. The images or other third party material in this
+article are included in the article’s Creative Commons license, unless indicated otherwise
+in the credit line; if the material is not included under the Creative Commons license,
+users will need to obtain permission from the license holder to reproduce the material.
+To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
+
+NATURE COMMUNICATIONS | 5:3846 | DOI: 10.1038/ncomms4846 | www.nature.com/naturecommunications
+
+& 2014 Macmillan Publishers Limited. All rights reserved.
+
+
